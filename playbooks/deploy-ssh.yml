@@ -3,7 +3,7 @@
    vars:
      - provision_password: '$6$vFMjxtjr$oI5/zXqf.67WyMZ.kn.Qu7wA0nhBcdHBuYkNqhiUCex9fvOG4PXzXmsjTwFnJOcaSOku86LkxpfrFt/a9.KHm0'
    gather_facts: no
-   remote_user: provision
+   remote_user: ubuntu
    become: true
    become_method: sudo
  
