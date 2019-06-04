@@ -5,18 +5,18 @@ Docker Image of Ansible for executing ansible-playbook command against an extern
 ## Build
 
 ```
-docker build -t vernekarp/docker-ansible-playbook .
+docker build -t ansible .
 ```
 
 ### Test
 
+Set entrypoint as `sh` to login to the container.
 ```
-$ docker run --name ansible-playbook --rm vernekarp/docker-ansible-playbook --version
-
-ansible-playbook 2.3.0.0
-  config file =
-  configured module search path = [u'/opt/ansible/library']
-  python version = 2.7.13 (default, Apr 20 2017, 12:13:37) [GCC 6.3.0]
+$ sudo docker run --rm -it   -v ~/.ssh/id_rsa:/root/.ssh/id_rsa   \
+                             -v ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub   \
+                             -v ~/.ssh/known_hosts:/root/.ssh/known_hosts  \
+                             -v $(pwd):/ansible/playbooks   \
+                             -v /var/log/ansible/ansible.log  --entrypoint sh ansible
 ```
 
 ## Running Ansible Playbook
