@@ -1,6 +1,6 @@
 FROM alpine:3.7
 
-ENV ANSIBLE_VERSION 2.5.0
+ENV ANSIBLE_VERSION 2.8.0
 
 ENV BUILD_PACKAGES \
   bash \
@@ -43,6 +43,8 @@ RUN set -x && \
     \
     echo "==> Installing Ansible..."  && \
     pip install ansible==${ANSIBLE_VERSION} && \
+    echo "==> Installing flask-restful..." && \
+    pip install flask-restful && \
     \
     echo "==> Cleaning up..."  && \
     apk del build-dependencies && \
