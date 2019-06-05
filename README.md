@@ -12,9 +12,7 @@ docker build -t ansible .
 
 Set entrypoint as `sh` to login to the container.
 ```
-$ sudo docker run --rm -it   -v ~/.ssh/id_rsa:/root/.ssh/id_rsa   \
-                             -v ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub   \
-                             -v ~/.ssh/known_hosts:/root/.ssh/known_hosts  \
+$ sudo docker run --rm -it   -v ~/.ssh:/root/.ssh   \
                              -v $(pwd):/ansible/playbooks   \
                              -v /var/log/ansible/ansible.log  --entrypoint sh ansible
 ```
